@@ -132,7 +132,7 @@
 
 ### 0.0.0.0
 
-- Wildcart
+- Wildcard
 
 - **나머지** 모든 IP
 
