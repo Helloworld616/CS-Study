@@ -59,7 +59,7 @@
 |1| :white_check_mark: |1| [3장 데이터 통신](네트워크/3장-데이터-통신.md) | |
 |1| :white_check_mark: |2| [4장 IP 주소](네트워크/4장-IP-주소.md) | |
 |1| :white_check_mark: |1| [5장 ARP 프로토콜](네트워크/5장-ARP-프로토콜.md) | |
-|1| :white_large_square: |2| [6장 IPv4, ICMP 프로토콜](네트워크/6장-IPv4,-ICMP-프로토콜.md) | |
+|1| :white_check_mark: |2| [6장 IPv4, ICMP 프로토콜](네트워크/6장-IPv4,-ICMP-프로토콜.md) | |
 |2| :white_large_square: |2| [7장 전송계층 및 포트](네트워크/7장-전송계층-및-포트.md) | |
 |2| :white_large_square: |1| [8장 UDP 비연결지향형](네트워크/8장-UDP-비연결지향형.md) | |
 |2| :white_large_square: |2| [9장 TCP 연결지향형](네트워크/9장-TCP-연결지향형.md) | |
