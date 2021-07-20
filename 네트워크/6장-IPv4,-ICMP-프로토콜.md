@@ -311,7 +311,7 @@
 
   <img src="6장-IPv4,-ICMP-프로토콜.assets/1-1626755824976.PNG" width="750px" height="400px">
 
-
+<br>
 
 ### 문제 2
 
