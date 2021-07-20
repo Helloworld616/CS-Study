@@ -236,8 +236,6 @@
 
     <img src="6장-IPv4,-ICMP-프로토콜.assets/9.PNG" width="750px" height="400px">
 
-    ![9]()
-
 12. 결국 B가 받게 되고, ICMP 응답 프로토콜  **00**을 작성한다.
 
     <img src="6장-IPv4,-ICMP-프로토콜.assets/10.PNG" width="750px" height="400px">
