@@ -76,7 +76,7 @@
 ### HTTP 1.1의 특징
 
 - HTTP 1.0과 호환 가능
-- Multiple Request 처리가 가능하여 Client의 Request가 많을 경우 연속적인 응답 제공 → Pipeline 방식의 Request / Response 진행\
+- Multiple Request 처리가 가능하여 Client의 Request가 많을 경우 연속적인 응답 제공 → Pipeline 방식의 Request / Response 진행
 - HTTP 1.0과는 달리 Server가 갖는 하나의 IP Address와 다수의 Web Site 연결 가능
 - 빠른 속도와 Internet Protocol 설계에 최적화될  수 있도록 Cache 사용
 - Data를 압축해서 전달이 가능하도록 하여 전달하는 Data 양이 감소
