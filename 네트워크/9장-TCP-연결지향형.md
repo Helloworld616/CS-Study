@@ -20,9 +20,9 @@
 
 ### TCP 프로토콜의 구조
 
-- Source Port : 출발지 포트
+- Source Port : 출발지 포트 (2byte)
 
-- Destination Port : 목적지 포트
+- Destination Port : 목적지 포트 (2byte)
 
 - Sequence Number (4byte)
 
@@ -77,7 +77,11 @@
   - 상대방과 연결을 시작할 때 무조건 사용하는 플래그
   - 처음 요청이 보내지고 난 후 동기화가 시작됨
 - F (Fin Flag)
-  -  연결을 끊을 때 사용하는 플래그
+  - 연결을 끊을 때 사용하는 플래그
+  
+    <img src="9장-TCP-연결지향형.assets/2-1627694492249.PNG" width="750px" height="400px">
+  
+    <img src="9장-TCP-연결지향형.assets/3-1627694539334.PNG" width="750px" height="400px">
 
 <br>
 
@@ -103,21 +107,38 @@
 
 1. 클라이언트가 패킷을 만들어서 요청을 보낸다. (이더넷, IPv4, TCP 인캡슐레이션)
    - Flag는 Syn이 세팅, Ack 번호는 0이 세팅되어서 간다.
+   
+     <img src="9장-TCP-연결지향형.assets/4.PNG" width="750px" height="400px">
+   
 2. 요청을 받은 서버는 디캡슐레이션을 통해 내용을 확인한다.
+
+   <img src="9장-TCP-연결지향형.assets/5.PNG" width="750px" height="400px">
+
 3. 이후 서버는 클라이언트에게 응답과 연결 요청을 보낸다.
+
+   <img src="9장-TCP-연결지향형.assets/6.PNG" width="750px" height="400px">
+
 4. 응답을 받는 클라이언트는 디캡슐레이션을 통해 내용을 확인한다.
+
+   <img src="9장-TCP-연결지향형.assets/7.PNG" width="750px" height="400px">
+
 5. 이후 더 연결해도 되는지의 여부를 인캡슐레이션해서 다시 서버에 보낸다.
+
+   <img src="9장-TCP-연결지향형.assets/8-1627698695913.PNG" width="750px" height="400px">
 
 <br>
 
 ### Sequence 번호와 Ack 번호
 
 - 맨 처음에 클라이언트가 Sequence 번호와 Ack 번호를 세팅해서 요청을 보낸다.
-- 이후 요청을 받은 쪽에서, **받은 시퀀스 번호 + 1**을 해서 Ack 번호 를 계산한다. 
+- 이후 요청을 받은 쪽에서, **받은 시퀀스 번호 + 1**을 해서 Ack 번호를 계산한다. 또한 받는 쪽에서 자신 만의 Sequence 번호를 랜덤으로 생성한다.
 - Sequence 번호가 처음 받은 번호가 아닐 경우, **기존 Sequence 번호에 1을 추가**해서 보낸다.
 - 보안에서 쓰이는 이유
   - 클라이언트가 아닌 누군가가 동기화 값을 계산해서 서버에 통신을 시도할 수 있다.
-  - 이 경우 클라이언트는 통신을 할 수가 없다. 이것이 세션 하이재킹이다! 
+  
+  - 이 경우 클라이언트는 통신을 할 수가 없다. 이것이 **세션 하이재킹**이다! 
+  
+    <img src="9장-TCP-연결지향형.assets/1-1627698931615.PNG" width="750px" height="400px">
 
 <br>
 
@@ -134,6 +155,8 @@
   > 1. 보낸 쪽에서 또 보낼 때는 SEQ 번호와 ACK 번호가 그대로다.
   > 2. 받는 쪽에서 SEQ 번호는 받은 ACK 번호가 된다.
   > 3. 받는 쪽에서 ACK 번호는 **받은 SEQ 번호 + 데이터의 크기**
+  
+  <img src="9장-TCP-연결지향형.assets/1-1627704540242.PNG" width="750px" height="400px">
 
 <br>
 
@@ -144,12 +167,21 @@
 ### TCP의 여러 가지 상태 변화
 
 - 실선은 클라이언트의 상태 변화, 점선은 서버의 상태 변화
+
 - LISTEN  상태 :  포트 번호를 열어 놓고 있는 상태.
   - 클라이언트의 요청을 계속 듣고 있는 상태
+  
 - ESTABLISHED 상태 : 연결이 수립된 상태
+
 - 연결을 하기 위해서는 서버의 포트 상태가 LISTEN 상태인지 확인해야 함.
+
 - 3Way Handshake가 끝나면 ESTABLISHED 상태가 됨. 
+
 - 클라이언트는 능동적(active open), 서버는 수동적(passive open)
+
+  <img src="9장-TCP-연결지향형.assets/1-1627704866422.PNG" width="750px" height="400px">
+
+  <img src="9장-TCP-연결지향형.assets/2-1627704888658.PNG" width="750px" height="400px">
 
 <br>
 
