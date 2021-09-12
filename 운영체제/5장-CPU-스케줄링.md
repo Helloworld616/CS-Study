@@ -253,5 +253,64 @@
   - 별개의 큐를 두는 방법 VS 공동 큐를 사용하는 방법
 - Symmetric Multiprocessing (SMP)
   - 각 프로세서가 각자 알아서 스케줄링 결정
+  - 모든 CPU가 대등하게 일을 함!
 - Asymmetric multiprocessing
   - 하나의 프로세서가 시스템 데이터의 접근과 공유를 책임지고 나머지 프로세서는 거기에 따름
+  - 하나의 CPU가 대장 CPU가 되는 형태
+
+<br>
+
+### Real-Time Scheduling
+
+- CPU를 사용할 수 있는 Deadline이 생김
+  - Deadline을 어기지 않게  스케줄링을 하는 것이 중요함!
+- 온라인 스케줄링 : 프로세스의 CPU 도착 시각을 모르는 상황에서 스케줄링하는 것
+  - 지금까지의 스케줄링은 모두 온라인 스케줄링이다!
+- 오프라인 스케줄링 : 프로세스의 CPU 도착 시각을 알고 있는 상황에서 스케줄링하는 것
+  - Hard real-time systems는 Deadline을 지키는 것이 중요하기 때문에 오프라인 스케줄링을 사용하는 경우도 많다.
+- Hard real-time systems
+  - Hard real-time task는 정해진 시간 안에 반드시 끝내도록 스케줄링해야 함
+- Soft real-time computing
+  - Soft real-time task는 일반 프로세스에 비해 높은 priority를 갖도록 해야 함
+  - 무조건 Deadline을 지켜야 한다는 점은 아니지만, Deadline을 어겼을 시 불편함이 생김
+    - ex) 동영상 끊김
+  - Deadline을 엄격히 지켜주면 좋지만 비용이 많이 들기에 일반 프로세스와 섞어서 활용한다.
+  - 그래도 동영상 끊김 등의 문제가 일어나면 안 되기에 우선순위 부여 등의 방법으로 최대한 Deadline 이내에 프로세스가 처리되도록 한다.
+
+<br>
+
+### Thread Scheduling
+
+- Local Scheduling
+  - User level thread의 경우 사용자 수준의  thread library에 의해 어떤 thread를 스케줄할지 결정
+  - 운영체제는 thread의 존재를 모르고 사용자 본인이 내부에 여러 개의 thread를 둔다.
+    - 프로세스가 CPU를 받은 후, 어떤 thread를 스케줄 할 지 스스로 결정
+- Global Scheduling
+  - Kernel level thread의 경우 일반 프로세스와 마찬가지로 커널의 단기 스케줄러가 어떤 thread를 스케줄할지 결정
+    - 운영체제가 직접 어느 thread에게 CPU를 줄 지 결정한다.
+
+<br>
+
+### Algorithm Evaluation
+
+- Queueing models
+
+  - 확률 분포로 주어지는 arrival rate와 service rate 등을 통해 각종 performance index 값을 계산
+  - 굉장히 이론적인 방법 → 수식 계산을 사용함
+  - 아래 그림의 Server를 CPU로 생각하면 됨
+
+- Implementation (구현) & Measurement (성능 측정)
+
+  - 실제 시스템에 알고리즘을 구현하여 실제 작업(workload)에 대해서 성능을 측정 비교
+  - 리눅스 환경에서 사용됨
+
+- Simulation (모의 실험)
+
+  - 알고리즘을 모의 프로그램으로 작성 후 trace를 입력으로 하여 결과 비교
+
+  - trace : simulation의 input data
+
+    - trace가 신빙성이 있어야 한다!
+    -  신빙성이 중요하기에 trace를 실제 프로그램으로부터 추출해서 사용하는 경우도 있다.
+
+    ![1](5장-CPU-스케줄링.assets/1-1631407674555.JPG)
